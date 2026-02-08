@@ -1,0 +1,8 @@
+{
+  "name": "CodeAI Academy",
+  "description": "An advanced educational platform for learning programming and artificial intelligence, featuring AI-powered image editing and tutoring.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

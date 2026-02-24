@@ -1,6 +1,6 @@
 {
   "name": "CodeAI Academy",
-  "description": "An advanced educational platform for learning programming and artificial intelligence, featuring AI-powered image editing and tutoring.",
+  "description": "An advanced educational platform for learning programming and artificial intelligence, featuring AI-powered image editing and tutoring. Integrated with Cloudflare for optimal performance and deployment.",
   "requestFramePermissions": [
     "camera",
     "microphone"

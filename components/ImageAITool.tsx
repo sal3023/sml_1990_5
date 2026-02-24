@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { Upload, Wand2, RefreshCw, Download, Image as ImageIcon, AlertCircle } from 'lucide-react';
+import { Upload, Wand2, RefreshCw, Download, AlertCircle } from 'lucide-react';
 import { editImageWithAI } from '../services/geminiService';
 
 const ImageAITool: React.FC = () => {
@@ -36,8 +36,8 @@ const ImageAITool: React.FC = () => {
     try {
       const edited = await editImageWithAI(image, mimeType, prompt);
       setResultImage(edited);
-    } catch (err: any) {
-      setError("حدث خطأ أثناء معالجة الصورة. يرجى المحاولة مرة أخرى.");
+    } catch (error: unknown) {
+      setError(`حدث خطأ أثناء معالجة الصورة: ${(error as Error).message}. يرجى المحاولة مرة أخرى.`);
     } finally {
       setIsProcessing(false);
     }
@@ -58,7 +58,7 @@ const ImageAITool: React.FC = () => {
           <Wand2 className="text-indigo-400" />
           معمل تعديل الصور بالذكاء الاصطناعي
         </h2>
-        <p className="text-slate-400 text-sm mt-1">ارفع صورة واطلب من Gemini تعديلها (مثال: "أضف فلتراً قديماً" أو "اجعلها بأسلوب السايبربانك")</p>
+        <p className="text-slate-400 text-sm mt-1">ارفع صورة واطلب من Gemini تعديلها (مثال: &quot;أضف فلتراً قديماً&quot; أو &quot;اجعلها بأسلوب السايبربانك&quot;)</p>
       </div>
 
       <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -127,7 +127,7 @@ const ImageAITool: React.FC = () => {
               <img src={resultImage} className="w-full h-full object-cover animate-fade-in" alt="Result" />
             ) : (
               <div className="text-center p-6">
-                <ImageIcon className="w-12 h-12 text-slate-800 mx-auto mb-2" />
+                <img src="https://picsum.photos/seed/image-placeholder/100/100" alt="Placeholder" className="w-12 h-12 text-slate-800 mx-auto mb-2" referrerPolicy="no-referrer" />
                 <p className="text-slate-600 text-sm">ستظهر الصورة المعدلة هنا بعد المعالجة</p>
               </div>
             )}

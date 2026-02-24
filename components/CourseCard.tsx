@@ -2,7 +2,7 @@
 import React from 'react';
 import { Course } from '../types';
 import { getIcon } from '../constants';
-import { ChevronLeft, Clock, BarChart, ArrowUpRight } from 'lucide-react';
+import { Clock, BarChart, ArrowUpRight } from 'lucide-react';
 
 interface Props {
   course: Course;

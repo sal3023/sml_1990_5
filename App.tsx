@@ -1,16 +1,16 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { 
-  Terminal, BrainCircuit, Rocket, LayoutDashboard, Settings, 
+  Terminal, BrainCircuit, LayoutDashboard, Settings, 
   UserCircle, BookOpen, ChevronDown, ChevronRight, Bell, 
-  X, Info, CheckCircle, AlertTriangle, RefreshCw, Filter, SortAsc, Search,
+  X, Info, CheckCircle, SortAsc, Search,
   Zap, Trophy, Target, Award, Sparkles, Layers
 } from 'lucide-react';
 import CourseCard from './components/CourseCard';
 import ImageAITool from './components/ImageAITool';
 import AIChatTutor from './components/AIChatTutor';
 import { COURSES } from './constants';
-import { Notification, Course } from './types';
+import { Notification } from './types';
 
 interface NavSectionProps {
   title: string;
@@ -43,7 +43,7 @@ const NavItem = ({ icon, label, active = false }: { icon: React.ReactNode, label
   </a>
 );
 
-const QuickStat = ({ icon: Icon, label, value, color }: { icon: any, label: string, value: string, color: string }) => (
+const QuickStat = ({ icon: Icon, label, value, color }: { icon: React.ElementType, label: string, value: string, color: string }) => (
   <div className="glass-card p-5 rounded-[2rem] flex items-center gap-4 group">
     <div className={`p-3 rounded-2xl bg-${color}-500/10 text-${color}-400 group-hover:scale-110 transition-transform`}>
       <Icon size={24} />
@@ -303,8 +303,8 @@ const App: React.FC = () => {
                 <div className="w-20 h-20 rounded-full bg-slate-900 flex items-center justify-center mb-6 text-slate-700">
                   <Search size={40} />
                 </div>
-                <h3 className="text-2xl font-black mb-3">عذراً، لم نجد نتائج</h3>
-                <p className="text-slate-500 font-medium max-w-sm mx-auto">لم نتمكن من العثور على أي مسار يطابق " {searchQuery} " في مستوى {filterLevel}.</p>
+                <h3 className="text-2xl font-black mb-3">عذرًا، لم نجد نتائج</h3>
+                <p className="text-slate-500 font-medium max-w-sm mx-auto">لم نتمكن من العثور على أي مسار يطابق &quot; {searchQuery} &quot; في مستوى {filterLevel}.</p>
                 <button 
                   onClick={() => {setFilterLevel('all'); setSearchQuery('');}}
                   className="mt-8 px-8 py-3 bg-indigo-600 rounded-2xl font-black text-sm hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-600/20 active:scale-95"

@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   Send, Bot, Sparkles, Trash2, Maximize2, 
   Terminal, Lightbulb, Code, BookOpen, 
-  ChevronLeft, Copy, Check
+  Copy, Check
 } from 'lucide-react';
 import { chatWithTutor } from '../services/geminiService';
 import { ChatMessage } from '../types';
@@ -37,7 +37,7 @@ const AIChatTutor: React.FC = () => {
     try {
       const response = await chatWithTutor(userMsg);
       setMessages(prev => [...prev, { role: 'model', text: response || '' }]);
-    } catch (err) {
+    } catch (error: unknown) {
       setMessages(prev => [...prev, { role: 'model', text: '⚠️ حدث خطأ في النظام الذكي. يرجى المحاولة لاحقاً.' }]);
     } finally {
       setIsTyping(false);
@@ -50,7 +50,7 @@ const AIChatTutor: React.FC = () => {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  const QuickPrompt = ({ icon: Icon, text, onClick }: any) => (
+  const QuickPrompt = ({ icon: Icon, text, onClick }: { icon: React.ElementType, text: string, onClick: () => void }) => (
     <button 
       onClick={onClick}
       className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/5 hover:border-indigo-500/30 hover:bg-indigo-500/5 transition-all text-[11px] font-bold text-slate-400 hover:text-indigo-300"
